@@ -3,10 +3,12 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
+    <StartupObject>AdventOfCode2021.Program</StartupObject>
+    <AssemblyName>aoc21</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Infrastructure\" />
+    <Folder Include="Infrastructure\Input\" />
   </ItemGroup>
 
 </Project>
