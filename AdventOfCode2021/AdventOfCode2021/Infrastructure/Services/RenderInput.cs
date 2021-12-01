@@ -23,7 +23,7 @@ namespace AdventOfCode2021.Infrastructure.Services
             }
             else
             {
-                throw new FileNotFoundException($"{inputName} not found in {__path}");
+                throw new FileNotFoundException($"Error: {inputName}.txt not found in {__path}\r\n");
             }
         }
 

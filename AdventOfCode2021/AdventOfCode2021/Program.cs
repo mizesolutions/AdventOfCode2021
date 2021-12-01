@@ -1,5 +1,6 @@
 ﻿using System;
 using AdventOfCode2021.Days._01;
+using AdventOfCode2021.Days._02;
 
 namespace AdventOfCode2021
 {
@@ -29,13 +30,15 @@ namespace AdventOfCode2021
                 return 0;
             }
 
-
             static int RunDay(string day, bool flag)
             {
                 switch (day)
                 {
                     case "day01":
                         _ = new Day01(day, flag);
+                        break;
+                    case "day02":
+                        _ = new Day02(day, flag);
                         break;
                     default:
                         return 0;
