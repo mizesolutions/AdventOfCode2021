@@ -3,8 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AdventOfCode2021.Days._01
 {
@@ -29,17 +27,17 @@ namespace AdventOfCode2021.Days._01
                 }
             }
             Console.WriteLine("Puzzle One:");
-            PuzzleOne(IntInput);
+            PuzzleOne();
             Console.WriteLine("Puzzle Two:");
             PuzzleTwo();
         }
 
-        private void PuzzleOne(List<int> list)
+        private void PuzzleOne()
         {
-            for (var i = 0; i <= list.Count - 2; i++)
+            for (var i = 0; i <= IntInput.Count - 2; i++)
             {
                 int j = i + 1;
-                if (list.ElementAt(j) > list.ElementAt(i))
+                if (IntInput.ElementAt(j) > IntInput.ElementAt(i))
                 {
                     Count++;
                 }
@@ -49,13 +47,15 @@ namespace AdventOfCode2021.Days._01
 
         private void PuzzleTwo()
         {
-            var sumList = new List<int>();
             Count = 0;
-            for(var i = 0; i <= IntInput.Count - 3; i++)
+            for (int i = 0, j = i + 1; j <= IntInput.Count - 3; i++, j++)
             {
-                sumList.Add(IntInput.ElementAt(i) + IntInput.ElementAt(i+1) + IntInput.ElementAt(i+2));
+                if ((IntInput.ElementAt(j) + IntInput.ElementAt(j + 1) + IntInput.ElementAt(j + 2)) > (IntInput.ElementAt(i) + IntInput.ElementAt(i + 1) + IntInput.ElementAt(i + 2)))
+                {
+                    Count++;
+                }
             }
-            PuzzleOne(sumList);
+            Console.WriteLine($"Result: {Count}\r\n\r\n");
         }
     }
 }
