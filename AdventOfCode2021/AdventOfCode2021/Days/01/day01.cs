@@ -11,7 +11,7 @@ namespace AdventOfCode2021.Days._01
 
         public Day01(string day, bool hasInput) : base(day, hasInput)
         {
-            Console.WriteLine(GetCurrentClass());
+            PrintCurrentClass();
             IntInput = Input.ToInt();
             
             PuzzleOne();
@@ -20,30 +20,30 @@ namespace AdventOfCode2021.Days._01
 
         private void PuzzleOne()
         {
-            Console.WriteLine(GetCurrentMethod());
+            PrintCurrentMethod();
             for (var i = 0; i <= IntInput.Count - 2; i++)
             {
                 int j = i + 1;
                 if (IntInput.ElementAt(j) > IntInput.ElementAt(i))
                 {
-                    Count++;
+                    Result++;
                 }
             }
-            Console.WriteLine(GetResults());
+            PrintResults();
         }
 
         private void PuzzleTwo()
         {
-            Console.WriteLine(GetCurrentMethod());
-            Count = 0;
+            PrintCurrentMethod();
+            Result = 0;
             for (int i = 0, j = i + 1; j <= IntInput.Count - 3; i++, j++)
             {
                 if ((IntInput.ElementAt(j) + IntInput.ElementAt(j + 1) + IntInput.ElementAt(j + 2)) > (IntInput.ElementAt(i) + IntInput.ElementAt(i + 1) + IntInput.ElementAt(i + 2)))
                 {
-                    Count++;
+                    Result++;
                 }
             }
-            Console.WriteLine(GetResults());
+            PrintResults();
         }
     }
 }

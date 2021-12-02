@@ -9,7 +9,7 @@ namespace AdventOfCode2021.Days._00
     public class BaseDay
     {
         public RenderInput Input { get; set; }
-        public int Count { get; set; }
+        public int Result { get; set; }
 
         public BaseDay(string day, bool hasInput)
         {
@@ -25,27 +25,28 @@ namespace AdventOfCode2021.Days._00
                     Environment.Exit(0);
                 }
             }
+            Result = 0;
         }
 
         [MethodImpl(MethodImplOptions.NoInlining)]
-        public string GetCurrentMethod()
+        public void PrintCurrentMethod()
         {
             var st = new StackTrace();
             var sf = st.GetFrame(1);
 
-            return $"  {sf.GetMethod().Name}";
+            Console.WriteLine($"  {sf.GetMethod().Name}");
         }
 
         [MethodImpl(MethodImplOptions.NoInlining)]
-        public string GetCurrentClass()
+        public void PrintCurrentClass()
         {
-            return $"--==<  {this.GetType().Name}  >==--";
+            Console.WriteLine($"--==<  {this.GetType().Name}  >==--");
         }
 
         [MethodImpl(MethodImplOptions.NoInlining)]
-        public string GetResults()
+        public void PrintResults()
         {
-            return $"      Result: {Count}\r\n";
+            Console.WriteLine($"      Result: {Result}\r\n");
         }
     }
 }
