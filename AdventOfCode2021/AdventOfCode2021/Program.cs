@@ -1,6 +1,5 @@
 ﻿using System;
-using AdventOfCode2021.Days._01;
-using AdventOfCode2021.Days._02;
+using AdventOfCode2021.Days;
 
 namespace AdventOfCode2021
 {
@@ -39,6 +38,14 @@ namespace AdventOfCode2021
                         break;
                     case "day02":
                         _ = new Day02(day, flag);
+                        break;
+                    case "day03":
+                        _ = new Day03(day, flag);
+                        break;
+                    case "all":
+                        _ = new Day01("day01", flag);
+                        _ = new Day02("day02", flag);
+                        _ = new Day03("day03", flag);
                         break;
                     default:
                         return 0;

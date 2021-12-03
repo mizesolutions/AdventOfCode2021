@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AdventOfCode2021.Infrastructure.Services
 {
@@ -29,9 +26,9 @@ namespace AdventOfCode2021.Infrastructure.Services
 
         public List<string> ReadFile()
         {
-            var output = new List<string>();
+            List<string> output = new ();
 
-            using (StreamReader file = new StreamReader(__path + InputName))
+            using (StreamReader file = new(__path + InputName))
             {
                 var line = "";
                 while ((line = file.ReadLine()) != null)
@@ -40,11 +37,6 @@ namespace AdventOfCode2021.Infrastructure.Services
                 }
             }
             return output;
-        }
-
-        public List<int> ToInt()
-        {
-            return Output.Select(int.Parse).ToList();
         }
     }
 }
