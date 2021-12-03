@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Runtime.CompilerServices;
 
-namespace AdventOfCode2021.Days._00
+namespace AdventOfCode2021.Days
 {
     public class BaseDay
     {

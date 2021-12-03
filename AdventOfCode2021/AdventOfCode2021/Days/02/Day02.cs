@@ -1,13 +1,5 @@
-﻿using AdventOfCode2021.Days._00;
-using AdventOfCode2021.Infrastructure.Services;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AdventOfCode2021.Days._02
+﻿
+namespace AdventOfCode2021.Days
 {
     public class Day02 : BaseDay
     {

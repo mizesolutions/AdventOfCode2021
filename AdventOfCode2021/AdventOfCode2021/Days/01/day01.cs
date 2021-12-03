@@ -1,9 +1,7 @@
-﻿using AdventOfCode2021.Days._00;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace AdventOfCode2021.Days._01
+namespace AdventOfCode2021.Days
 {
     public class Day01 : BaseDay
     {
@@ -12,8 +10,8 @@ namespace AdventOfCode2021.Days._01
         public Day01(string day, bool hasInput) : base(day, hasInput)
         {
             PrintCurrentClass();
-            IntInput = Input.ToInt();
-            
+            IntInput = Input.Output.Select(int.Parse).ToList();
+
             PuzzleOne();
             PuzzleTwo();
         }
