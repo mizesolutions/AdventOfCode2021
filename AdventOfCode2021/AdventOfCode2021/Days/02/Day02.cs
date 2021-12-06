@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-
+﻿
 namespace AdventOfCode2021.Days
 {
     public class Day02 : BaseDay
