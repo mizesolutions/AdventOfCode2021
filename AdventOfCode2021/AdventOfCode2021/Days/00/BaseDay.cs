@@ -1,5 +1,6 @@
 ﻿using AdventOfCode2021.Infrastructure.Services;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Runtime.CompilerServices;
@@ -9,7 +10,9 @@ namespace AdventOfCode2021.Days
     public class BaseDay
     {
         public RenderInput Input { get; set; }
-        public int Result { get; set; }
+        public List<string> FileInput { get; set; }
+        public int Result1 { get; set; }
+        public int Result2 { get; set; }
 
         public BaseDay(string day, bool hasInput)
         {
@@ -18,6 +21,9 @@ namespace AdventOfCode2021.Days
                 try
                 {
                     Input = new RenderInput(day);
+                    FileInput = Input.FileToList();
+                    Result1 = 0;
+                    Result2 = 0;
                 }
                 catch (FileNotFoundException fe)
                 {
@@ -25,7 +31,6 @@ namespace AdventOfCode2021.Days
                     Environment.Exit(0);
                 }
             }
-            Result = 0;
         }
 
         [MethodImpl(MethodImplOptions.NoInlining)]
@@ -44,9 +49,9 @@ namespace AdventOfCode2021.Days
         }
 
         [MethodImpl(MethodImplOptions.NoInlining)]
-        public void PrintResults()
+        public void PrintResults(int results)
         {
-            Console.WriteLine($"      Result: {Result}\r\n");
+            Console.WriteLine($"      Result: {results}\r\n");
         }
     }
 }

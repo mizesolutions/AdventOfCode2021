@@ -1,4 +1,5 @@
-﻿
+﻿using System.Collections.Generic;
+
 namespace AdventOfCode2021.Days
 {
     public class Day02 : BaseDay
@@ -20,7 +21,8 @@ namespace AdventOfCode2021.Days
         private void PuzzleOne()
         {
             PrintCurrentMethod();
-            foreach (var s in Input.Output)
+            Result1 = 0;
+            foreach (var s in FileInput)
             {
                 var split = s.Split(" ");
                 switch (split[0])
@@ -38,18 +40,18 @@ namespace AdventOfCode2021.Days
                         break;
                 }
             }
-            Result = Xposition * Yposition;
-            PrintResults();
+            Result1 = Xposition * Yposition;
+            PrintResults(Result1);
         }
 
         private void PuzzleTwo()
         {
             PrintCurrentMethod();
-            Result = 0;
+            Result2 = 0;
             Xposition = 0;
             Yposition = 0;
             Aim = 0;
-            foreach (var s in Input.Output)
+            foreach (var s in FileInput)
             {
                 var split = s.Split(" ");
                 switch (split[0])
@@ -68,8 +70,8 @@ namespace AdventOfCode2021.Days
                         break;
                 }
             }
-            Result = Xposition * Yposition;
-            PrintResults();
+            Result2 = Xposition * Yposition;
+            PrintResults(Result2);
         }
     }
 }
