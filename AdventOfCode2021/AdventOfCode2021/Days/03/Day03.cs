@@ -19,35 +19,35 @@ namespace AdventOfCode2021.Days
         private void PuzzleOne()
         {
             PrintCurrentMethod();
-
-            ComputeCommons(Input.Output);
+            Result1 = 0;
+            ComputeCommons(FileInput);
 
             var gamma = Convert.ToInt32(string.Join("", MCcount), 2);
             var epsilon = Convert.ToInt32(string.Join("", LCcount), 2);
 
-            Result = gamma * epsilon;
-            PrintResults();
+            Result1 = gamma * epsilon;
+            PrintResults(Result1);
         }
 
         private void PuzzleTwo()
         {
             PrintCurrentMethod();
-            Result = 0;
-            List<string> o2 = FilterList(Input.Output, MCcount, 0, true);
-            ComputeCommons(Input.Output);
-            List<string> co2 = FilterList(Input.Output, LCcount, 0, false);
+            Result2 = 0;
+            List<string> o2 = FilterList(FileInput, MCcount, 0, true);
+            ComputeCommons(FileInput);
+            List<string> co2 = FilterList(FileInput, LCcount, 0, false);
 
             var o2Int = Convert.ToInt32(o2.FirstOrDefault().ToString(), 2);
             var co2Int = Convert.ToInt32(co2.FirstOrDefault().ToString(), 2);
 
-            Result = o2Int * co2Int;
-            PrintResults();
+            Result2 = o2Int * co2Int;
+            PrintResults(Result2);
         }
 
         private void ComputeCommons(List<string> list)
         {
-            MCcount = new int[Input.Output[0].Length];
-            LCcount = new int[Input.Output[0].Length];
+            MCcount = new int[FileInput[0].Length];
+            LCcount = new int[FileInput[0].Length];
 
             foreach (var s in list)
             {
@@ -75,7 +75,7 @@ namespace AdventOfCode2021.Days
 
         private List<string> FilterList(List<string> list, int[] filterByArray, int index, bool mostCommon)
         {
-            if (list.Count == 1 || index == Input.Output[0].Length)
+            if (list.Count == 1 || index == FileInput[0].Length)
                 return list;
 
             var filteredList = list.Where(x => x.Substring(index).StartsWith(filterByArray[index].ToString())).ToList();

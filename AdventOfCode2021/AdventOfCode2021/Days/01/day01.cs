@@ -6,12 +6,13 @@ namespace AdventOfCode2021.Days
     public class Day01 : BaseDay
     {
         private List<int> IntInput { get; set; }
+        
 
         public Day01(string day, bool hasInput) : base(day, hasInput)
         {
             PrintCurrentClass();
-            IntInput = Input.Output.Select(int.Parse).ToList();
-
+            IntInput = FileInput.Select(int.Parse).ToList();
+            Result1 = 0;
             PuzzleOne();
             PuzzleTwo();
         }
@@ -24,24 +25,24 @@ namespace AdventOfCode2021.Days
                 int j = i + 1;
                 if (IntInput.ElementAt(j) > IntInput.ElementAt(i))
                 {
-                    Result++;
+                    Result1++;
                 }
             }
-            PrintResults();
+            PrintResults(Result1);
         }
 
         private void PuzzleTwo()
         {
             PrintCurrentMethod();
-            Result = 0;
+            Result2 = 0;
             for (int i = 0, j = i + 1; j <= IntInput.Count - 3; i++, j++)
             {
                 if ((IntInput.ElementAt(j) + IntInput.ElementAt(j + 1) + IntInput.ElementAt(j + 2)) > (IntInput.ElementAt(i) + IntInput.ElementAt(i + 1) + IntInput.ElementAt(i + 2)))
                 {
-                    Result++;
+                    Result2++;
                 }
             }
-            PrintResults();
+            PrintResults(Result2);
         }
     }
 }

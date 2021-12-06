@@ -42,10 +42,14 @@ namespace AdventOfCode2021
                     case "day03":
                         _ = new Day03(day, flag);
                         break;
+                    case "day04":
+                        _ = new Day04(day, flag);
+                        break;
                     case "all":
                         _ = new Day01("day01", flag);
                         _ = new Day02("day02", flag);
                         _ = new Day03("day03", flag);
+                        _ = new Day04("day04", flag);
                         break;
                     default:
                         return 0;
