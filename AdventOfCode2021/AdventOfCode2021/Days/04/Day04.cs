@@ -1,28 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AdventOfCode2021.Days
 {
     class Day04 : BaseDay
     {
+        private List<int> IntList { get; set; }
+        private int[,] IntMatrix { get; set; }
+        private List<int[,]> IntMatrixList { get; set; }
+
         public Day04(string day, bool hasInput) : base(day, hasInput)
         {
             PrintCurrentClass();
-            Input.MixedDataRender();
-            //foreach (var e in Input.IntList)
-            //{
-            //    Console.WriteLine(e);
-            //}
-            //foreach (var e in Input.IntMatrixList)
-            //{
-            //    foreach (var m in e)
-            //    {
-            //        Console.WriteLine(m);
-            //    }
-            //}
+            IntList = new();
+            IntMatrix = new int[6, 6];
+            IntMatrixList = new(200);
+
+            MixedDataRender();
             PuzzleOne();
             PuzzleTwo();
         }
@@ -34,9 +29,9 @@ namespace AdventOfCode2021.Days
             Result2 = 0;
             bool end = false;
             List<int[,]> winOrder = new();
-            foreach (var number in Input.IntList)
+            foreach (var number in IntList)
             {
-                foreach (var m in Input.IntMatrixList)
+                foreach (var m in IntMatrixList)
                 {
                     end = false;
                     if (m[0,0] == 0)
@@ -95,6 +90,46 @@ namespace AdventOfCode2021.Days
                 }
             }
             return sum * number;
+        }
+
+        private void MixedDataRender()
+        {
+            var result = File.ReadAllLines(Input.GetFullFileName());
+
+            for (int i = 0; i < result.Length; i++)
+            {
+                if (string.IsNullOrWhiteSpace(result[i]))
+                    continue;
+                if (result[i].Contains(','))
+                {
+                    IntList = result[0].Split(',').Select(int.Parse).ToList();
+                }
+                else
+                {
+                    if (result[i][0] == ' ')
+                        result[i] = result[i].Substring(1).Replace("  ", " ");
+                    else
+                        result[i] = result[i].Replace("  ", " ");
+                    int[] list = result[i].Split(" ").Select(int.Parse).ToArray();
+                    for (int row = 1, col = 1; row < IntMatrix.GetLength(1); row++)
+                    {
+                        if (IntMatrix[row, 1] == 0 && IntMatrix[row, 2] == 0)
+                        {
+                            foreach (var x in list)
+                            {
+                                IntMatrix[row, col] = x;
+                                col++;
+                            }
+                            row = IntMatrix.GetLength(1);
+                        }
+                    }
+                    if (IntMatrix[5, 4] > 0 || IntMatrix[5, 5] > 0)
+                    {
+                        IntMatrixList.Add(IntMatrix);
+                        IntMatrix = new int[6, 6];
+                    }
+                }
+            }
         }
     }
 }
