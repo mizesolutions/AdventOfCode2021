@@ -9,13 +9,16 @@ namespace AdventOfCode2021.Days
     class Day06 : BaseDay
     {
         private List<int> FishCount { get; set; }
-        private List<int> AddFish { get; set; }
+        private long[] FishState { get; set; }
+        private long FishResult1 { get; set; }
+        private long FishResult2 { get; set; }
 
         public Day06(string day, bool hasInput) : base(day, hasInput)
         {
             PrintCurrentClass();
             FishCount = FileInput.FirstOrDefault().Split(",").Select(int.Parse).ToList();
-            AddFish = new();
+            FishState = new long[9];
+
             PuzzleOne();
             PuzzleTwo();
         }
@@ -23,54 +26,40 @@ namespace AdventOfCode2021.Days
         private void PuzzleOne()
         {
             PrintCurrentMethod();
-            //PrintFish(0, true);
-            for (int day = 1; day <= 80; day++)
+            foreach (var fish in FishCount)
             {
-                AddFish = new();
-                for(int f = 0; f < FishCount.Count; f++)
-                {
-                    FishCount[f] -= 1;
-                    if(FishCount[f] == -1)
-                    {
-                        FishCount[f] = 6;
-                        AddFish.Add(8);
-                    }
-                }
-                FishCount = FishCount.Concat(AddFish).ToList();
-                //PrintFish(0, true);
+                FishState[fish] += 1;
+            }
+
+            long resetFish = 0;
+            for (int day = 1; day <= 256; day++)
+            {
+                FishState[0] = FishState[1];
+                FishState[1] = FishState[2];
+                FishState[2] = FishState[3];
+                FishState[3] = FishState[4];
+                FishState[4] = FishState[5];
+                FishState[5] = FishState[6];
+                FishState[6] = FishState[7];
+                FishState[7] = FishState[8];
+                FishState[6] += resetFish;
+                FishState[8] = resetFish;
+                resetFish = FishState[0];
                 if (day == 80)
                 {
-                    Result1 = FishCount.Count();
-                    PrintResults(Result1);
+                    FishResult1 = FishState.Sum();
                 }
             }
-            Result2 = FishCount.Count();
-            
+            FishResult2 = FishState.Sum();
+
+            PrintResults(FishResult1);
         }
 
         private void PuzzleTwo()
         {
             PrintCurrentMethod();
 
-            PrintResults(Result2);
+            PrintResults(FishResult2);
         }
-
-        private void PrintFish(int day, bool flag = false)
-        {
-            Console.Write($"\r\nDay {day}:  ");
-            if (flag)
-            {
-                foreach (var f in FishCount)
-                {
-                    Console.Write($"{f}, ");
-                }
-            }
-            else
-            {
-                Console.Write($"{FishCount.Count}");
-            }
-            
-        }
-
     }
 }
