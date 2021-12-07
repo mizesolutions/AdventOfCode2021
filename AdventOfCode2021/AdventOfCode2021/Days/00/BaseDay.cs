@@ -53,5 +53,11 @@ namespace AdventOfCode2021.Days
         {
             Console.WriteLine($"      Result: {results}\r\n");
         }
+
+        [MethodImpl(MethodImplOptions.NoInlining)]
+        public void PrintResults(long results)
+        {
+            Console.WriteLine($"      Result: {results}\r\n");
+        }
     }
 }
