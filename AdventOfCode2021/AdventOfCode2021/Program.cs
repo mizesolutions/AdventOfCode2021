@@ -57,6 +57,9 @@ namespace AdventOfCode2021
                     case "day08":
                         _ = new Day08(day, flag);
                         break;
+                    case "day09":
+                        _ = new Day09(day, flag);
+                        break;
                     case "all":
                         _ = new Day01("day01", flag);
                         _ = new Day02("day02", flag);
@@ -66,6 +69,7 @@ namespace AdventOfCode2021
                         _ = new Day06("day06", flag);
                         _ = new Day07("day07", flag);
                         _ = new Day08("day08", flag);
+                        _ = new Day09("day09", flag);
                         break;
                     default:
                         return 0;
