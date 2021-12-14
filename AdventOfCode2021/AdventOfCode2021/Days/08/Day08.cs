@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AdventOfCode2021.Days
 {
@@ -65,38 +62,38 @@ namespace AdventOfCode2021.Days
                 {
                     Segment1Map[8] = string.Concat(p2[9].OrderBy(c => c));
                 }
-                foreach (var s in p2)
+                // Map the 6 segments first
+                for(int i = 6; i < 9; i++)
                 {
-                    string os = string.Concat(s.OrderBy(c => c));
-                    if (os.Length == 5)  // Its a 2, 3, or 5
+                    string os = string.Concat(p2[i].OrderBy(c => c));
+                    if (!(os.Contains(Segment1Map[1][0]) && os.Contains(Segment1Map[1][1])))
                     {
-                        if (os.Contains(Segment1Map[1][0]) && os.Contains(Segment1Map[1][1])) // Its a 3
-                        {
-                            Segment1Map[3] = os;
-                        }
-                        else if (os.Contains(Segment1Map[1][1])) // Its a 5
-                        {
-                            Segment1Map[5] = os;
-                        }
-                        else    // Its a 2
-                        {
-                            Segment1Map[2] = os;
-                        }
+                        Segment1Map[6] = os;   // Its a 6
                     }
-                    else if (os.Length == 6)  // Its a 0, 6, or 9
+                    else if (os.Contains(Segment1Map[4][0]) && os.Contains(Segment1Map[4][1]) && os.Contains(Segment1Map[4][2]) && os.Contains(Segment1Map[4][3]))
                     {
-                        if (os.Contains(Segment1Map[4][0]) && os.Contains(Segment1Map[4][1]) && os.Contains(Segment1Map[4][2]) && os.Contains(Segment1Map[4][3])) 
-                        {
-                            Segment1Map[9] = os;   // Its a 9
-                        }
-                        else if (os.Contains(Segment1Map[5][0]) && os.Contains(Segment1Map[5][1]) && os.Contains(Segment1Map[5][2]) && os.Contains(Segment1Map[5][3]) && os.Contains(Segment1Map[5][4]))
-                        {
-                            Segment1Map[6] = os;   // Its a 6
-                        }
-                        else
-                        {
-                            Segment1Map[0] = os;   // Its a 0
-                        }
+                        Segment1Map[9] = os;   // Its a 9
+                    }
+                    else
+                    {
+                        Segment1Map[0] = os;   // Its a 0
+                    }
+                }
+                // Map the 5 segments
+                for (int i = 3; i < 6; i++)
+                {
+                    string os = string.Concat(p2[i].OrderBy(c => c));
+                    if (os.Contains(Segment1Map[1][0]) && os.Contains(Segment1Map[1][1])) // Its a 3
+                    {
+                        Segment1Map[3] = os;   // Its a 3
+                    }
+                    else if (Segment1Map[6].Contains(os[0]) && Segment1Map[6].Contains(os[1]) && Segment1Map[6].Contains(os[2]) && Segment1Map[6].Contains(os[3]) && Segment1Map[6].Contains(os[4]))
+                    {
+                        Segment1Map[5] = os;   // Its a 5
+                    }
+                    else    
+                    {
+                        Segment1Map[2] = os;   // Its a 2
                     }
                 }
                 int place = 1000;
